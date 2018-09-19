@@ -7,7 +7,7 @@ export default {
   name: "app",
   data: function() {
     return {
-      title: "hello"
+      title: "Hello world :)"
     };
   }
 };
