@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>{{ title }}</h1>
+    <h1 v-once>{{ title }}</h1>
     <h2>{{ sayTtitle() }}</h2>
     <hr>
     <a :href="link">Google</a>
@@ -19,6 +19,7 @@ export default {
   },
   methods: {
     sayTtitle: function() {
+      this.title = "Hello woooorld";
       return this.helloWorld;
     }
   }
