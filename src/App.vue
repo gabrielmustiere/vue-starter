@@ -4,6 +4,7 @@
     <h2>{{ sayTtitle() }}</h2>
     <hr>
     <a :href="link">Google</a>
+    <p v-html="lfinishedLnk"></p>
   </div>
 </template>
 
@@ -14,7 +15,8 @@ export default {
     return {
       title: "VueJS Starter",
       helloWorld: "Hello world :)",
-      link: "http://wwww.google.fr"
+      link: "http://wwww.google.fr",
+      lfinishedLnk: "<a href='http://wwww.google.fr'>http://wwww.google.fr</a>"
     };
   },
   methods: {
