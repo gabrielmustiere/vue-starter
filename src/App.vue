@@ -1,29 +1,21 @@
 <template>
   <div>
-    <h1 v-once>{{ title }}</h1>
-    <h2>{{ sayTtitle() }}</h2>
-    <hr>
-    <a :href="link">Google</a>
-    <p v-html="lfinishedLnk"></p>
+   <button v-on:click="increase">Cliquer</button>
+    <p>{{counter}}</p>
   </div>
 </template>
 
 <script>
 export default {
-  template: "",
   data: function() {
     return {
-      title: "VueJS Starter",
-      helloWorld: "Hello world :)",
-      link: "http://wwww.google.fr",
-      lfinishedLnk: "<a href='http://wwww.google.fr'>http://wwww.google.fr</a>"
+      counter: 0
     };
   },
-  methods: {
-    sayTtitle: function() {
-      this.title = "Hello woooorld";
-      return this.helloWorld;
+    methods : {
+      increase : function(){
+          this.counter++;
+      }
     }
-  }
 };
 </script>
