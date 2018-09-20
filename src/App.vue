@@ -2,7 +2,10 @@
   <div>
    <button v-on:click="increase(2, $event)">Cliquer</button>
     <p>{{counter}}</p>
-    <p v-on:mousemove="updateCoordinates">Coorrdinates : {{ x }} / {{ y }}</p>
+    <p v-on:mousemove="updateCoordinates">
+        Coorrdinates : {{ x }} / {{ y }}
+        - <span v-on:mousemove.stop>DEAD SPOT</span>
+    </p>
   </div>
 </template>
 
