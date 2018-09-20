@@ -1,6 +1,6 @@
 <template>
   <div>
-   <button v-on:click="increase">Cliquer</button>
+   <button v-on:click="increase(2, $event)">Cliquer</button>
     <p>{{counter}}</p>
     <p v-on:mousemove="updateCoordinates">Coorrdinates : {{ x }} / {{ y }}</p>
   </div>
@@ -16,13 +16,14 @@ export default {
     };
   },
   methods: {
-    increase: function() {
-      this.counter++;
+    increase: function(step, event) {
+      console.log(event);
+      this.counter += step;
     },
-      updateCoordinates : function(event){
-        this.x = event.clientX;
-        this.y = event.clientY;
-      }
+    updateCoordinates: function(event) {
+      this.x = event.clientX;
+      this.y = event.clientY;
+    }
   }
 };
 </script>
