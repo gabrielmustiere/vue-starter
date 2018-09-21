@@ -1,41 +1,25 @@
 <template>
-  <div>
-   <button v-on:click="increase(2, $event)">Cliquer</button>
-   <button v-on:click="counter++">Cliquer</button>
-    <p>{{ counter * 2 > 10 ? 'Plus de 10' : 'Moins de 10'}}</p>
-    <p v-on:mousemove="updateCoordinates">
-        Coorrdinates : {{ x }} / {{ y }}
-        - <span v-on:mousemove.stop>DEAD SPOT</span>
-    </p>
-      <input type="text" v-on:keyup.enter.space="alert" title="">
-    <hr>
-        <input type="text" v-model="name">
-        <p>{{name}}</p>
+    <div>
+        <button v-on:click="increase">Cliquer</button>
+        <p>Counter : {{ counter }}</p>
+        <p>Result : {{ result }}</p>
+
     </div>
 </template>
 
 <script>
-export default {
-  data: function() {
-    return {
-      counter: 0,
-      x: 0,
-      y: 0,
-      name: "Max"
+    export default {
+        data: function () {
+            return {
+                counter: 0,
+                result: ""
+            };
+        },
+        methods: {
+            increase: function () {
+                this.counter++;
+                this.result = this.counter > 5 ? "Plus grand que 5" : "Plus petit que 5";
+            }
+        }
     };
-  },
-  methods: {
-    increase: function(step, event) {
-      console.log(event);
-      this.counter += step;
-    },
-    updateCoordinates: function(event) {
-      this.x = event.clientX;
-      this.y = event.clientY;
-    },
-    alert: function(event) {
-      console.log(event);
-    }
-  }
-};
 </script>
