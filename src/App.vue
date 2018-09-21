@@ -8,7 +8,10 @@
         - <span v-on:mousemove.stop>DEAD SPOT</span>
     </p>
       <input type="text" v-on:keyup.enter.space="alert" title="">
-  </div>
+    <hr>
+        <input type="text" v-model="name">
+        <p>{{name}}</p>
+    </div>
 </template>
 
 <script>
@@ -17,7 +20,8 @@ export default {
     return {
       counter: 0,
       x: 0,
-      y: 0
+      y: 0,
+      name: "Max"
     };
   },
   methods: {
