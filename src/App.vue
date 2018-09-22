@@ -1,11 +1,8 @@
 <template>
     <div>
-        <button @click="counter++">Increase</button>
-        <button @click="counter--">Decrease</button>
-        <button @click="secondCounter++">Increase Second</button>
-        <p>Counter : {{ counter }} | {{ secondCounter }}</p>
-        <p>Result : {{ result() }} | {{ output }}</p>
-
+        <div class="demo" @click="attachRed = !attachRed" :class="{red: attachRed}"></div>
+        <div class="demo"></div>
+        <div class="demo"></div>
     </div>
 </template>
 
@@ -13,27 +10,22 @@
 export default {
   data: function() {
     return {
-      counter: 0,
-      secondCounter: 0
+      attachRed: false
     };
-  },
-  computed: {
-    output: function() {
-      return this.counter > 5 ? "Plus grand que 5" : "Plus petit que 5";
-    }
-  },
-  methods: {
-    result: function() {
-      return this.counter > 5 ? "Plus grand que 5" : "Plus petit que 5";
-    }
-  },
-  watch: {
-    counter: function() {
-      let vm = this;
-      setTimeout(function() {
-        vm.counter = 0;
-      }, 2000);
-    }
   }
 };
 </script>
+
+<style scoped>
+.demo {
+  width: 100px;
+  height: 100px;
+  background-color: gray;
+  display: inline-block;
+  margin: 10px;
+}
+
+.red {
+  background-color: red;
+}
+</style>
