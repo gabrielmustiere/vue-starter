@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="demo" @click="attachRed = !attachRed" :class="{red: attachRed}"></div>
+        <div class="demo" @click="attachRed = !attachRed" :class="divClasses"></div>
         <div class="demo"></div>
         <div class="demo"></div>
     </div>
@@ -12,6 +12,14 @@ export default {
     return {
       attachRed: false
     };
+  },
+  computed: {
+    divClasses: function() {
+      return {
+        red: this.attachRed,
+        blue: !this.attachRed
+      };
+    }
   }
 };
 </script>
@@ -24,8 +32,10 @@ export default {
   display: inline-block;
   margin: 10px;
 }
-
 .red {
   background-color: red;
+}
+.blue {
+  background-color: blue;
 }
 </style>
