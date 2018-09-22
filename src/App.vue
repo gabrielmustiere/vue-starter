@@ -1,8 +1,10 @@
 <template>
     <div>
         <div class="demo" @click="attachRed = !attachRed" :class="divClasses"></div>
-        <div class="demo"></div>
-        <div class="demo"></div>
+        <div class="demo" :class="[color,{red:attachRed}]"></div>
+        <div class="demo" :class="color"></div>
+        <hr>
+        <input type="text" v-model="color">
     </div>
 </template>
 
@@ -10,7 +12,8 @@
 export default {
   data: function() {
     return {
-      attachRed: false
+      attachRed: false,
+      color: "green"
     };
   },
   computed: {
@@ -32,10 +35,16 @@ export default {
   display: inline-block;
   margin: 10px;
 }
+
 .red {
   background-color: red;
 }
+
 .blue {
   background-color: blue;
+}
+
+.green {
+  background-color: green;
 }
 </style>
