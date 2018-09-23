@@ -1,50 +1,53 @@
 <template>
     <div>
-        <div class="demo" @click="attachRed = !attachRed" :class="divClasses"></div>
-        <div class="demo" :class="[color,{red:attachRed}]"></div>
-        <div class="demo" :class="color"></div>
+        <div class="demo" :style="myStyle"></div>
+        <div class="demo" :style="myStyle"></div>
+        <div class="demo" :style="myStyle"></div>
         <hr>
-        <input type="text" v-model="color">
+        <input type="text" v-model="color" @change="color">
+        <input type="text" v-model="size">
     </div>
 </template>
 
 <script>
-export default {
-  data: function() {
-    return {
-      attachRed: false,
-      color: "green"
-    };
-  },
-  computed: {
-    divClasses: function() {
+  export default {
+    data: function () {
       return {
-        red: this.attachRed,
-        blue: !this.attachRed
+        color: "gray",
+        size: 10,
+        unity : 'rem'
       };
+    },
+    computed: {
+      myStyle: function () {
+        return {
+          backgroundColor: this.color,
+          width: this.size + this.unity,
+          height: this.size + this.unity
+        };
+      }
     }
-  }
-};
+  };
 </script>
 
 <style scoped>
-.demo {
-  width: 100px;
-  height: 100px;
-  background-color: gray;
-  display: inline-block;
-  margin: 10px;
-}
+    .demo {
+        width: 100px;
+        height: 100px;
+        background-color: gray;
+        display: inline-block;
+        margin: 10px;
+    }
 
-.red {
-  background-color: red;
-}
+    .red {
+        background-color: red;
+    }
 
-.blue {
-  background-color: blue;
-}
+    .blue {
+        background-color: blue;
+    }
 
-.green {
-  background-color: green;
-}
+    .green {
+        background-color: green;
+    }
 </style>
