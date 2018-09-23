@@ -1,11 +1,33 @@
 <template>
-    <div>
-        <div class="demo" :style="myStyle"></div>
-        <div class="demo" :style="myStyle"></div>
-        <div class="demo" :style="myStyle"></div>
+    <div id="exercise">
         <hr>
-        <input type="text" v-model="color" @change="color">
-        <input type="text" v-model="size">
+        <div>
+            <button @click="startEffect">Start Effect</button>
+            <div id="effect" v-bind:class="effectClasses"></div>
+        </div>
+        <hr>
+        <div v-bind:class="[float, 'blue', 'text-color']">I got no class :(</div>
+        <hr>
+        <div>
+            <input type="text" v-model="userClass">
+            <div v-bind:class="[{visible: true}, userClass]"></div>
+        </div>
+        <hr>
+        <div>
+            <input type="text" v-model="userClass">
+            <input type="text" v-model="isVisible">
+            <div v-bind:class="[{visible: isVisible}, userClass]"></div>
+        </div>
+        <hr>
+        <div>
+            <input type="text" v-model="myStyle.backgroundColor">
+            <div v-bind:style="myStyle"></div>
+        </div>
+        <hr>
+        <div>
+            <button v-on:click="startProgress">Start Progress</button>
+            <div v-bind:class="['progress-bar']" v-bind:style="progressBar"></div>
+        </div>
     </div>
 </template>
 
@@ -13,41 +35,75 @@
   export default {
     data: function () {
       return {
-        color: "gray",
-        size: 10,
-        unity : 'rem'
+        effectClasses: {
+          highlight: false,
+          shrink: true
+        },
+        float: "float",
+        userClass: "",
+        isVisible: true,
+        myStyle: {
+          width: "100px",
+          height: "150px",
+          backgroundColor: "gray"
+        },
+        progressBar: {
+          width: "0px",
+          backgroundColor: "red"
+        }
       };
     },
-    computed: {
-      myStyle: function () {
-        return {
-          backgroundColor: this.color,
-          width: this.size + this.unity,
-          height: this.size + this.unity
-        };
+
+    methods: {
+      startEffect: function () {
+        let vm = this;
+        setInterval(function () {
+          vm.effectClasses.highlight = !vm.effectClasses.highlight;
+          vm.effectClasses.shrink = !vm.effectClasses.shrink;
+        }, 1000);
+      },
+      startProgress: function () {
+        let vm = this;
+        let width = 0;
+        setInterval(function () {
+          width = width + 10;
+          vm.progressBar.width = width + "px";
+        }, 500);
       }
     }
   };
 </script>
 
 <style scoped>
-    .demo {
+    #effect {
         width: 100px;
         height: 100px;
-        background-color: gray;
-        display: inline-block;
-        margin: 10px;
+        border: 1px solid black;
     }
-
-    .red {
+    .highlight {
         background-color: red;
+        width: 200px !important;
     }
-
+    .shrink {
+        background-color: gray;
+        width: 50px !important;
+    }
     .blue {
         background-color: blue;
     }
-
-    .green {
-        background-color: green;
+    .float {
+        float: right;
+    }
+    .text-color {
+        color: yellow;
+    }
+    .visible {
+        width: 100px;
+        height: 50px;
+    }
+    .progress-bar {
+        width: 200px;
+        height: 20px;
+        border: 1px solid black;
     }
 </style>
